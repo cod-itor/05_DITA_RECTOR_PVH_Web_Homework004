@@ -4,8 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./src/output.css">
 </head>
-<body>
+<body class="bg-cyan-300">
+    <section class="w-1/2 m-auto flex flex-col mt-10 gap-5">
+    <section class="flex justify-between">
+        <h1 class="font-bold text-4xl">Task List</h1>
+        <button class=" rounded-2xl pl-2 pr-2 pt-2 pb-2 bg-purple-600 hover:cursor-pointer font-bold text-white " id="add-task">
+            Add Task 
+        </button>
+
+    </section>
+    <section>
+        <div class="bg-white flex justify-between  pt-3 pl-5 pr-5 pb-3 rounded-2xl ">
+            <h2 class="text-cyan-400 font-bold">Task</h2>
+            <div class=" w-100 flex justify-between gap-6 ">
+                <h2 class="text-cyan-400 font-bold">Priority</h2>
+            <h2 class="text-cyan-400 font-bold">Status</h2>
+            <h2 class="text-amber-400 font-bold">Action</h2>
+            </div>
+        </div>
+    </section>
+    <section class="bg-white border-1 pt-6 pl-5 pr-5 pb-6">
+
+    </section>
+
+    <dialog id="dialog" class="m-auto bg-transparent p-0 backdrop:bg-black/50 backdrop:backdrop-blur-sm">
+        <section class="bg-white p-5 w-120 h-120">
+        <section class="flex flex-col gap-5">
+            <div class="flex justify-between">
+                <h2 class="text-2xl font-bold">Add task</h2>
+                <button class="border-1 p-1 rounded-lg hover:cursor-pointer" id="close-modal">X</button>
+
+            </div>
+            <p>Task</p>
+            <input type="text" name="task-input" placeholder="Web Homework" class="border border-cyan-600 rounded-lg">
+           <div>
+             <p>Priority</p>
+            <button id="high-priority" class="border border-red-700 text-red-700 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-red-700 hover:text-white cursor-pointer">
+                High
+            </button>
+            <button id="medium-priority" class="border border-amber-400 text-amber-400 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-amber-400 hover:text-white cursor-pointer">
+                Medium 
+            </button>
+            <button id="low-priority" class="border border-green-400 text-green-400 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-green-400 hover:text-white cursor-pointer">
+                Low
+            </button>
+           </div>
+            <div>
+                <p>Status</p>
+            <button class="border border-blue-400 text-blue-400 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-blue-400 hover:text-white cursor-pointer">
+                To Do
+            </button>
+            <button class="border border-blue-400 text-blue-400 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-blue-400 hover:text-white cursor-pointer">
+                Progress
+            </button>
+            <button class="border border-blue-400 text-blue-400 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-blue-400 hover:text-white cursor-pointer">
+                Done
+            </button>
+            </div>
+
+            <div class="flex justify-end">
+                    <button id="submit-form" class=" rounded-2xl pl-13 pr-13 pt-2 pb-2 bg-purple-600 hover:cursor-pointer font-bold text-white">Add</button>
+            </div>
+
+        </section>
+    </section>
+    </dialog>
+</section>
+<script src="/index.js"></script>
+
     
 </body>
 </html>
