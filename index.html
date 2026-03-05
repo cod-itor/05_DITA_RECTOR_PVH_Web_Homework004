@@ -1,79 +1,216 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./src/output.css">
-</head>
-<body class="bg-cyan-300">
+    <link rel="stylesheet" href="./src/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body class="bg-cyan-300">
     <section class="w-1/2 m-auto flex flex-col mt-10 gap-5">
-    <section class="flex justify-between">
+      <section class="flex justify-between">
         <h1 class="font-bold text-4xl">Task List</h1>
-        <button class=" rounded-2xl pl-2 pr-2 pt-2 pb-2 bg-purple-600 hover:cursor-pointer font-bold text-white " id="add-task">
-            Add Task 
+        <button
+          class="rounded-2xl pl-2 pr-2 pt-2 pb-2 bg-purple-600 hover:cursor-pointer font-bold text-white"
+          id="add-task"
+        >
+          Add Task
         </button>
-
-    </section>
-    <section>
-        <div class="bg-white flex justify-between  pt-3 pl-5 pr-5 pb-3 rounded-2xl ">
-            <h2 class="text-cyan-400 font-bold">Task</h2>
-            <div class=" w-100 flex justify-between gap-6 ">
-                <h2 class="text-cyan-400 font-bold">Priority</h2>
+      </section>
+      <section>
+        <div
+          class="bg-white flex justify-between pt-3 pl-5 pr-5 pb-3 rounded-2xl"
+        >
+          <h2 class="text-cyan-400 font-bold">Task</h2>
+          <div class="w-100 flex justify-between gap-6">
+            <h2 class="text-cyan-400 font-bold">Priority</h2>
             <h2 class="text-cyan-400 font-bold">Status</h2>
             <h2 class="text-amber-400 font-bold">Action</h2>
-            </div>
+          </div>
         </div>
-    </section>
-    <section class="bg-white border-1 pt-6 pl-5 pr-5 pb-6">
+      </section>
+      <section
+        class="bg-white pt-6 pl-5 pr-5 pb-6 rounded-2xl flex justify-between"
+      >
+        <p>Java Homework</p>
 
-    </section>
-
-    <dialog id="dialog" class="m-auto bg-transparent p-0 backdrop:bg-black/50 backdrop:backdrop-blur-sm">
-        <section class="bg-white p-5 w-120 h-120">
-        <section class="flex flex-col gap-5">
-            <div class="flex justify-between">
-                <h2 class="text-2xl font-bold">Add task</h2>
-                <button class="border-1 p-1 rounded-lg hover:cursor-pointer" id="close-modal">X</button>
-
-            </div>
-            <p>Task</p>
-            <input type="text" name="task-input" placeholder="Web Homework" class="border border-cyan-600 rounded-lg">
-           <div>
-             <p>Priority</p>
-            <button id="high-priority" class="border border-red-700 text-red-700 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-red-700 hover:text-white cursor-pointer">
-                High
-            </button>
-            <button id="medium-priority" class="border border-amber-400 text-amber-400 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-amber-400 hover:text-white cursor-pointer">
-                Medium 
-            </button>
-            <button id="low-priority" class="border border-green-400 text-green-400 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-green-400 hover:text-white cursor-pointer">
-                Low
-            </button>
-           </div>
-            <div>
-                <p>Status</p>
-            <button class="border border-blue-400 text-blue-400 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-blue-400 hover:text-white cursor-pointer">
-                To Do
-            </button>
-            <button class="border border-blue-400 text-blue-400 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-blue-400 hover:text-white cursor-pointer">
-                Progress
-            </button>
-            <button class="border border-blue-400 text-blue-400 pt-1 pb-1 pl-5 pr-5 rounded-2xl hover:bg-blue-400 hover:text-white cursor-pointer">
-                Done
-            </button>
-            </div>
-
-            <div class="flex justify-end">
-                    <button id="submit-form" class=" rounded-2xl pl-13 pr-13 pt-2 pb-2 bg-purple-600 hover:cursor-pointer font-bold text-white">Add</button>
-            </div>
-
+        <section class="flex justify-between w-100">
+          <p>High</p>
+          <p>Progress</p>
+          <div>
+            <i class="fa-solid fa-pen-to-square text-2xl" id="edit-button"></i>
+            <i class="fa-solid fa-trash text-2xl" id="delete-button"></i>
+          </div>
         </section>
-    </section>
-    </dialog>
-</section>
-<script src="/index.js"></script>
+      </section>
+      <!-- add task -->
+      <dialog
+  id="dialog"
+  class="m-auto bg-transparent p-0 backdrop:bg-black/50 backdrop:backdrop-blur-sm"
+>
+  <section class="bg-white p-8 w-[480px] rounded-2xl shadow-lg flex flex-col gap-5">
 
+    <!-- Header -->
+    <div class="flex justify-between items-center">
+      <h2 class="text-2xl font-bold">Add Task</h2>
+      <button
+        id="close-modal"
+        class="border-2 border-blue-500 text-blue-500 font-bold w-9 h-9 rounded-lg flex items-center justify-center hover:bg-blue-50 cursor-pointer"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- Task Input -->
+    <div class="flex flex-col gap-2">
+      <p class="font-bold">Task</p>
+      <input
+        type="text"
+        placeholder="Web Homework"
+        class="border-2 border-cyan-400 rounded-xl px-4 py-3 w-full outline-none focus:border-cyan-500 text-gray-400 placeholder-gray-300"
+      />
+    </div>
+
+    <!-- Priority -->
+    <div class="flex flex-col gap-3">
+      <p class="font-bold">Priority</p>
+      <div class="flex gap-3">
+        <button
+          id="high-priority"
+          class="border-2 border-red-500 text-red-500 font-medium py-1.5 px-6 rounded-2xl hover:bg-red-500 hover:text-white cursor-pointer transition-colors"
+        >High</button>
+        <button
+          id="medium-priority"
+          class="border-2 border-amber-400 text-amber-400 font-medium py-1.5 px-6 rounded-2xl hover:bg-amber-400 hover:text-white cursor-pointer transition-colors"
+        >Medium</button>
+        <button
+          id="low-priority"
+          class="border-2 border-green-500 text-green-500 font-medium py-1.5 px-6 rounded-2xl hover:bg-green-500 hover:text-white cursor-pointer transition-colors"
+        >Low</button>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="flex flex-col gap-3">
+      <p class="font-bold">Status</p>
+      <div class="flex gap-3">
+        <button
+          class="border-2 border-cyan-400 text-cyan-400 font-medium py-1.5 px-6 rounded-2xl hover:bg-cyan-400 hover:text-white cursor-pointer transition-colors"
+        >To Do</button>
+        <button
+          class="border-2 border-cyan-400 text-cyan-400 font-medium py-1.5 px-6 rounded-2xl hover:bg-cyan-400 hover:text-white cursor-pointer transition-colors"
+        >Progress</button>
+        <button
+          class="border-2 border-cyan-400 text-cyan-400 font-medium py-1.5 px-6 rounded-2xl hover:bg-cyan-400 hover:text-white cursor-pointer transition-colors"
+        >Done</button>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="flex justify-end mt-2">
+      <button
+        id="submit-form"
+        class="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-16 rounded-2xl cursor-pointer transition-colors"
+      >
+        Add
+      </button>
+    </div>
+
+  </section>
+</dialog>
+
+      <!-- delete confirmation modal -->
+      <dialog
+  id="delete-modal"
+  class="m-auto bg-transparent p-0 backdrop:bg-black/50 backdrop:backdrop-blur-sm"
+>
+  <section
+    class="bg-white p-10 w-80 rounded-2xl flex flex-col items-center gap-6 shadow-xl"
+  >
+    <h1 class="text-2xl font-bold text-red-600">Are you sure ?</h1>
+    <i class="fa-solid fa-triangle-exclamation text-red-500 text-5xl"></i>
+    <div class="flex gap-4">
+      <button
+        id="confirm-delete"
+        class="bg-red-500 text-white font-bold py-2 px-6 rounded-full border-2 border-blue-500 hover:bg-red-600 cursor-pointer"
+      >
+        Yes
+      </button>
+      <button
+        id="cancel-delete"
+        class="bg-blue-400 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-500 cursor-pointer"
+      >
+        No
+      </button>
+    </div>
+  </section>
+</dialog>
+<!-- edit -->
+ <dialog id="edit-modal" class="m-auto bg-transparent p-0 backdrop:bg-black/50 backdrop:backdrop-blur-sm">
+   
+<section class="bg-white p-8 w-[480px] rounded-2xl shadow-lg flex flex-col gap-5">
+  <!-- Header -->
+  <div class="flex flex-row-reverse">
+    <button
+      id="close-edit-modal"
+      class="border-2 border-blue-500 text-blue-500 font-bold w-9 h-9 rounded-lg flex items-center justify-center hover:bg-blue-50 cursor-pointer"
+    >
+      ✕
+    </button>
+  </div>
+
+  <!-- Task Input -->
+  <div class="flex flex-col gap-2">
+    <p class="font-bold">Task</p>
+    <input
+      type="text"
+      placeholder="Web Homework"
+      class="border-2 border-cyan-400 rounded-xl px-4 py-3 w-full outline-none focus:border-cyan-500 text-gray-400 placeholder-gray-300"
+    />
+  </div>
+
+  <!-- Priority -->
+  <div class="flex flex-col gap-3">
+    <p class="font-bold">Priority</p>
+    <div class="flex gap-3">
+      <button class="border-2 border-red-500 text-red-500 font-medium py-1.5 px-6 rounded-2xl hover:bg-red-500 hover:text-white cursor-pointer transition-colors">High</button>
+      <button class="border-2 border-amber-400 text-amber-400 font-medium py-1.5 px-6 rounded-2xl hover:bg-amber-400 hover:text-white cursor-pointer transition-colors">Medium</button>
+      <button class="border-2 border-green-500 text-green-500 font-medium py-1.5 px-6 rounded-2xl hover:bg-green-500 hover:text-white cursor-pointer transition-colors">Low</button>
+    </div>
+  </div>
+
+  <!-- Status -->
+  <div class="flex flex-col gap-3">
+    <p class="font-bold">Status</p>
+    <div class="flex gap-3">
+      <button class="border-2 border-cyan-400 text-cyan-400 font-medium py-1.5 px-6 rounded-2xl hover:bg-cyan-400 hover:text-white cursor-pointer transition-colors">To Do</button>
+      <button class="border-2 border-cyan-400 text-cyan-400 font-medium py-1.5 px-6 rounded-2xl hover:bg-cyan-400 hover:text-white cursor-pointer transition-colors">Progress</button>
+      <button class="border-2 border-cyan-400 text-cyan-400 font-medium py-1.5 px-6 rounded-2xl hover:bg-cyan-400 hover:text-white cursor-pointer transition-colors">Done</button>
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <div class="flex flex-row-reverse mt-2  gap-3">
+    <button
+      id="submit-edit-form"
+      class="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-10 rounded-2xl cursor-pointer transition-colors"
+    >
+      Update
+    </button>
+    <button
+      id="cancel-form"
+      class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-10 rounded-2xl cursor-pointer transition-colors"
+    >
+      Cancel
+    </button>
     
-</body>
+  </div>
+</section>
+</dialog>
+    <script src="/index.js"></script>
+  </body>
 </html>
